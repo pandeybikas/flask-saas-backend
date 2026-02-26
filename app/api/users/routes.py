@@ -1,8 +1,12 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify
+from flask_jwt_extended import jwt_required
+from app.common.decorators import role_required
 
-user_bp=Blueprint('/user', __name__)
+users_bp = Blueprint("users", __name__)
 
 
-user_bp.route('/health')
-def health():
-    return ({'message': 'users health is ok'})
+@users_bp.route("/", methods=["GET"])
+@jwt_required()
+@role_required("admin")
+def get_all_users():
+    return jsonify({"message": "Only admins can see all users"})

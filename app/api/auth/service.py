@@ -37,10 +37,11 @@ class AuthServices:
         if not bycrpt.check_password_hash(user.password_hash, password):
             raise ValueError("Invalid credentials") 
         
-        access_token= create_access_token(identity=user.id)
-        refresh_token= create_refresh_token(identity=user.id)
+        access_token= create_access_token(identity=user.id, additional_claims={"role": user.role})
+        refresh_token= create_refresh_token(identity=user.id, additional_claims={'role': user.role})
 
         return {
             "access_token": access_token,
-            "refresh_token": refresh_token
+            "refresh_token": refresh_token,
+
         }

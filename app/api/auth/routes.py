@@ -1,7 +1,7 @@
 from flask import request, Blueprint, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.api.auth.service import AuthServices
-
+from app.common.decorators import role_required
 
 auth_bp=Blueprint('/auth', __name__)
 
