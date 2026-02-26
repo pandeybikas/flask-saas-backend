@@ -1,0 +1,7 @@
+# --- DEPENDENCIES --
+
+envv/
+
+
+# env variable file ---
+.env
