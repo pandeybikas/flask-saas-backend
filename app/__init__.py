@@ -1,9 +1,9 @@
 from .extensions import db,migrate,jwt, cors, bycrpt
 from flask import Flask
 from .config import Config
-from api.auth.routes import auth_bp
-from api.tasks.routes import task_bp
-from api.users.routes import user_bp
+from .api.auth.routes import auth_bp
+from .api.tasks.routes import task_bp
+from .api.users.routes import user_bp
 import os
 
 def create_app():
@@ -19,6 +19,8 @@ def create_app():
     jwt.init_app(app)
     cors.init_app(app)
     bycrpt.init_app(app)
+     # Import models
+    from app import models
 
     #register blueprint
     app.register_blueprint(auth_bp, url_prefix='/api/v1/auth')
