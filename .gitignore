@@ -5,3 +5,7 @@ envv/
 
 # env variable file ---
 .env
+
+
+#project cache
+ /api/__pycache__/
